@@ -1,21 +1,8 @@
 import { createId } from '@paralleldrive/cuid2';
 import sequelize from '../config/db.js';
 import { DataTypes } from 'sequelize';
-import e from 'express';
-
-
 
 const User = sequelize.define('User', {
-    /*
-id (UUID, PK)
-email (string, unique)
-password_hash (string)
-role (enum: 'user' | 'admin')
-reset_token (string, nullable)
-reset_token_expiry (timestamp, nullable)
-created_at (timestamp)
-updated_at (timestamp)
- */
     id: {
         type: DataTypes.STRING,
         primaryKey: true,
@@ -42,8 +29,10 @@ updated_at (timestamp)
         type: DataTypes.DATE,
         allowNull: true,
     }
-},{
+}, {
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
-})
+});
+
+export default User;
