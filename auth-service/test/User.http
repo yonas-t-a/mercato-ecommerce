@@ -18,3 +18,13 @@ Content-Type: application/json
   "email": "test1user@example.com",
   "password": "Test1Password123"
 }
+
+###
+
+# Request password reset for the user
+POST http://localhost:3000/api/auth/request-password-reset
+Content-Type: application/json
+
+{
+  "email": "test1user@example.com"
+}

@@ -17,3 +17,12 @@ export const login = async (req, res, next) => {
         next(error);
     }
 };
+
+export const requestPasswordReset = async (req, res, next) => {
+    try {
+        const result = await authService.requestPasswordReset(req.body.email);
+        res.json({ message: 'Reset token generated', ...result });
+    } catch (error) {
+        next(error);
+    }
+};
