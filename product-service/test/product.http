@@ -1,0 +1,43 @@
+### Create a new product
+POST http://localhost:3002/products
+Content-Type: application/json
+
+{
+  "name": "Test Product",
+  "description": "A product for testing purposes.",
+  "price": 19.99,
+  "category": "testing",
+  "stock_quantity": 100,
+  "image_url": "http://example.com/image.png"
+}
+
+### Get all products
+GET http://localhost:3002/products
+
+### Get a product by ID (replace :id with actual product id)
+GET http://localhost:3002/products/lw6pdiwu1rli115txdo107e7
+
+### Add a review to a product (replace :id with actual product id)
+POST http://localhost:3002/products/lw6pdiwu1rli115txdo107e7/review
+Content-Type: application/json
+
+{
+  "user_id": "user123",
+  "rating": 5,
+  "review": "Excellent product!"
+}
+
+### Update a product (replace :id with actual product id)
+PUT http://localhost:3002/products/lw6pdiwu1rli115txdo107e7
+Content-Type: application/json
+
+{
+  "name": "Updated Product Name",
+  "price": 29.99
+}
+
+### Delete a product (replace :id with actual product id)
+DELETE http://localhost:3002/products/lw6pdiwu1rli115txdo107e7
+
+### Delete a review (replace :reviewId with actual review id)
+DELETE http://localhost:3002/products/review/jbamn0i6t934uzmx1zy5clzv
