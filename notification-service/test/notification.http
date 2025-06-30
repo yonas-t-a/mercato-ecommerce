@@ -1,0 +1,10 @@
+### Send an order notification
+POST http://localhost:3005/notify/order
+Content-Type: application/json
+
+{
+  "email": "yonasachule@gmail.com",
+  "subject": "Your Order Confirmation",
+  "text": "Thank you for your order! Your order #12345 has been placed.",
+  "html": "<h1>Thank you for your order!</h1><p>Your order #12345 has been placed.</p>"
+} 
