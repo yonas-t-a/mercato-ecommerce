@@ -1,0 +1,134 @@
+### AUTH: Register a new user
+POST http://localhost:4000/auth/register
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123",
+  "role": "user"
+}
+
+### AUTH: Login
+POST http://localhost:4000/auth/login
+Content-Type: application/json
+
+{
+  "email": "test1user@example.com",
+  "password": "Test1Password123"
+}
+
+### AUTH: Request password reset
+POST http://localhost:4000/auth/request-password-reset
+Content-Type: application/json
+
+{
+  "email": "user@example.com"
+}
+
+### PRODUCTS: Create a new product (protected, add Authorization header)
+POST http://localhost:4000/products
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+
+{
+  "name": "Gateway Product",
+  "description": "Created via API Gateway.",
+  "price": 25.99,
+  "category": "gateway",
+  "stock_quantity": 10,
+  "image_url": "http://example.com/gateway.png"
+}
+
+### PRODUCTS: Get all products
+GET http://localhost:4000/products
+
+### PRODUCTS: Get a product by ID
+GET http://localhost:4000/products/<PRODUCT_ID>
+
+### PRODUCTS: Update a product
+PUT http://localhost:4000/products/<PRODUCT_ID>
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+
+{
+  "name": "Updated Product Name",
+  "price": 29.99
+}
+
+### PRODUCTS: Delete a product
+DELETE http://localhost:4000/products/<PRODUCT_ID>
+Authorization: Bearer <JWT_TOKEN>
+
+### PRODUCTS: Add a review to a product
+POST http://localhost:4000/products/<PRODUCT_ID>/review
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+
+{
+  "user_id": "<USER_ID>",
+  "rating": 5,
+  "review": "Excellent product!"
+}
+
+### PRODUCTS: Delete a review
+DELETE http://localhost:4000/products/review/<REVIEW_ID>
+Authorization: Bearer <JWT_TOKEN>
+
+### CART: Get cart for a user
+GET http://localhost:4000/cart
+Authorization: Bearer <JWT_TOKEN>
+
+### CART: Add item to cart
+POST http://localhost:4000/cart/add
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+
+{
+  "product_id": "<PRODUCT_ID>",
+  "quantity": 2
+}
+
+### CART: Update cart item
+PUT http://localhost:4000/cart/update
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+
+{
+  "product_id": "<PRODUCT_ID>",
+  "quantity": 5
+}
+
+### CART: Remove item from cart
+DELETE http://localhost:4000/cart/remove/<PRODUCT_ID>
+Authorization: Bearer <JWT_TOKEN>
+
+### ORDERS: Create a new order
+POST http://localhost:4000/orders
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+
+{
+  "items": [
+    { "product_id": "<PRODUCT_ID>", "quantity": 2 },
+    { "product_id": "<PRODUCT_ID2>", "quantity": 1 }
+  ],
+  "total_amount": 49.97,
+  "payment_id": "pay_abc123"
+}
+
+### ORDERS: Get orders for a user
+GET http://localhost:4000/orders/<USER_ID>
+Authorization: Bearer <JWT_TOKEN>
+
+### ORDERS: Update an order
+PUT http://localhost:4000/orders/<ORDER_ID>
+Content-Type: application/json
+Authorization: Bearer <JWT_TOKEN>
+
+{
+  "status": "paid"
+}
+
+### ORDERS: Delete an order
+DELETE http://localhost:4000/orders/<ORDER_ID>
+Authorization: Bearer <JWT_TOKEN>
